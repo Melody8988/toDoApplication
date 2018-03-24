@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./vendors/angular.js"></script>
     <script src="./scripts/client.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <title>Document</title>
 </head>
 <body ng-app="toDoApp" >
@@ -29,7 +29,7 @@
                 <td>{{task.status}}</td>
                 <td><button ng-click="vm.deleteToDo(task._id)">
                     Delete Task</button></td>
-                <td><button ng-click="vm.changeStatus(task)">
+                <td><button ng-show="!task.status" ng-click="vm.changeStatus(task._id, task.status)">
                     Change if complete </button></td>
             
             </tr>

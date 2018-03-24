@@ -5,7 +5,7 @@ let Schema = mongoose.Schema;
 
 let toDoSchema = new Schema({
     description: {type: String, required: true },
-    status: {type: Boolean, default: false}
+    status: {type: Boolean, default: false, required: true}
 });
 
 let Task = mongoose.model('tasks', toDoSchema);
@@ -52,6 +52,21 @@ router.get('/', (req, res)=>{
             }
         })
 
+    });
+
+    //PUT
+    router.put('/:id', (req, res)=>{
+        console.log('update completed status');
+        let taskId = req.params.id;
+        let completionUpdate = req.body;
+        Task.findByIdAndUpdate(taskId, updates, {new: true}, (err, updatedTask)=>{
+            if(err){
+                console.log('error:', err);
+                res.sendStatus(500);
+            } else{
+                res.sendStatus(200);
+            }
+        })
     })
 
 
