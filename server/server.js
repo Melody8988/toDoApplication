@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 5005;
 const bodyParser = require('body-parser');
+const toDoRouter = require('./routes/toDo.router');
 
 //Source mongo location
 const mongoose = require('mongoose');
@@ -21,6 +22,9 @@ mongoose.connection.on('error', (err) =>{
 //Body-parser needed for Angular 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+//Connect to router
+app.use('/tasks', toDoRouter);
 
 //Serve up static files
 app.use(express.static('server/public'));

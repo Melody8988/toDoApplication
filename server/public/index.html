@@ -6,23 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./vendors/angular.js"></script>
     <script src="./scripts/client.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body ng-app="toDoApp">
-    <div ng-controller="toDoController as vm">
+<body ng-app="toDoApp" >
+    <div ng-controller="toDoController as vm" id= "container">
     <h1>To Do List!</h1>
+
+    <!-- form for the To Do list! -->
     <input ng-model="vm.newToDo.description" type="text" placeholder="Item to do">
     <button ng-click="vm.addToDo(vm.newToDo)">Create!</button>
-    Added To Do: {{vm.newToDo}}
 
 
     <table>
         <thead><tr><th>Tasks</th>
                    <th>Complete?</th>
-                   <th>Delete</th></tr></thead>
+                   <th>Delete</th></tr>
+        </thead>
+
         <tbody ng-repeat="task in vm.toDoArray">
             <tr><td>{{task.description}}</td>
-                <td>{{task.status}}</td></tr>
+                <td>{{task.status}}</td>
+                <td><button ng-click="vm.deleteToDo(task._id)">
+                    Delete Task</button></td>
+                <td><button ng-click="vm.changeStatus(task)">
+                    Change if complete </button></td>
+            
+            </tr>
         </tbody>
     </table>
     </div>
