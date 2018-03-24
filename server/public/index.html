@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vendors/angular.js"></script>
+    <script src="./scripts/client.js"></script>
+    <title>Document</title>
+</head>
+<body ng-app="toDoApp">
+    <div ng-controller="toDoController as vm">
+    <h1>To Do List!</h1>
+    <input ng-model="vm.newToDo.description" type="text" placeholder="Item to do">
+    <button ng-click="vm.addToDo(vm.newToDo)">Create!</button>
+    Added To Do: {{vm.newToDo}}
+
+
+    <table>
+        <thead><tr><th>Tasks</th>
+                   <th>Complete?</th>
+                   <th>Delete</th></tr></thead>
+        <tbody ng-repeat="task in vm.toDoArray">
+            <tr><td>{{task.description}}</td>
+                <td>{{task.status}}</td></tr>
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>
