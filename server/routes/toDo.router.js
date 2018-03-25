@@ -59,7 +59,7 @@ router.get('/', (req, res)=>{
         console.log('update completed status');
         let taskId = req.params.id;
         let completionUpdate = req.body;
-        Task.findByIdAndUpdate(taskId, updates, {new: true}, (err, updatedTask)=>{
+        Task.findByIdAndUpdate(taskId, completionUpdate, {new: true}, (err, updatedTask)=>{
             if(err){
                 console.log('error:', err);
                 res.sendStatus(500);

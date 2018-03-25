@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/style.css">
     <script src="./vendors/angular.js"></script>
     <script src="./scripts/client.js"></script>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <title>Document</title>
 </head>
-<body ng-app="toDoApp" >
-    <div ng-controller="toDoController as vm" id= "container">
-    <h1>To Do List!</h1>
+<body ng-app="toDoApp" class="body">
+    <div ng-controller="toDoController as vm" class= "container">
+    <h1>To Do List</h1>
 
     <!-- form for the To Do list! -->
     <input ng-model="vm.newToDo.description" type="text" placeholder="Item to do">
@@ -20,17 +21,17 @@
 
     <table>
         <thead><tr><th>Tasks</th>
-                   <th>Complete?</th>
+                   <th>Complete</th>
                    <th>Delete</th></tr>
         </thead>
 
         <tbody ng-repeat="task in vm.toDoArray">
-            <tr><td>{{task.description}}</td>
+            <tr ng-class="{true: 'showRedColor', false: ''}[task.status == true]"><td>{{task.description}}</td>
                 <td>{{task.status}}</td>
                 <td><button ng-click="vm.deleteToDo(task._id)">
                     Delete Task</button></td>
-                <td><button ng-show="!task.status" ng-click="vm.changeStatus(task._id, task.status)">
-                    Change if complete </button></td>
+                <td><button ng-click="vm.changeStatus(task._id, task.status)">
+                    Update Completion </button></td>
             
             </tr>
         </tbody>

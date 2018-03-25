@@ -5,6 +5,24 @@ myApp.controller('toDoController', ['$http', function($http){
     let self = this;
     self.toDoArray = [];
 
+    //UPDATE 
+
+self.changeStatus = function(taskId, updatedStatus){
+    updatedStatus = !updatedStatus;
+    console.log('new status will be', updatedStatus);
+    console.log(status);
+    $http({
+        method: 'PUT', 
+        url: '/tasks/' + taskId,
+        data: {status: updatedStatus}
+    }).then(function(response){
+        console.log('completion status changed!');
+        self.getToDo();
+    }).catch(function(error){
+        console.log('could not update *sad face', error);
+    })
+}
+
 //POST new task to SERVER
 
 self.addToDo = function(newToDo){
@@ -50,21 +68,6 @@ self.addToDo = function(newToDo){
         })
     }
 
-//UPDATE 
 
-self.changeStatus = function(taskId, updatedStatus){
-    updatedStatus = !updatedStatus;
-    console.log(updatedStatus);
-    $http({
-        method: 'PUT', 
-        url: '/tasks/' + taskId,
-        data: {status: updatedStatus}
-    }).then(function(response){
-        console.log('completion status changed!');
-        self.getToDo();
-    }).catch(function(error){
-        console.log('could not update:(', error);
-    })
-}
 
 }]);//end controller function
