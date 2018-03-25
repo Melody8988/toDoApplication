@@ -1,17 +1,66 @@
-.body{
-    background-color: #49859b;
-}
-
 .container{
-    /* background-color: white; */
     margin: 30px;
 }
 
+
 h1{
-    font-family: Helvetica, sans-serif;
-    font-weight: 30px;
+  padding-top: 40px;
+  font-family: Helvetica;
+  font-weight: 100;
+  font-size: 20px;
+  padding-bottom: 2px;
+  color: #b5b8bc;
 }
 
 .showRedColor{
-    background-color: red;
+    background-color:  #515151;
+}
+
+
+th{
+  padding-top: 30px;
+  color: #b5b8bc;
+  font-weight: 30;
+ 
+}
+
+.body{
+    background-color: #26282b;
+}
+
+th, td{
+    width: 200px;
+    height: 20px;
+    text-align: center;
+    font-family: Helvetica;
+}
+
+td{
+    color: #b5b8bc;
+    font-weight: 60;
+}
+
+table{
+   margin: 0px auto;
+}
+
+.delete{
+    background-color: #26282b;
+    color: #b5b8bc;
+}
+
+.formInput{
+    background-color: #26282b;
+    color: #b5b8bc;
+    height: 15px;
+
+}
+
+.createBtn{
+    background-color: #26282b;
+    color: #b5b8bc;
+}
+.update{
+    background-color: #26282b;
+    color: #b5b8bc;
 }
